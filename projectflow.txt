@@ -1,0 +1,67 @@
+1. Build the app(any) and test in local
+2. Start dockerhub and docker-desktop (sign-in to both)
+3. Prepare the dockerfile in the project
+4. Create the Docker image and test it:
+ >>docker build -t kubernetes-test-app:latest .
+ >>docker images
+ >>docker run -p 5000: 5000 kubernetes-test-app:latest
+
+5. Create docker deployment.yaml
+
+6. Install Minikube
+    >> Go to: https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstab1e%2F.exe+down10ad
+    >> .exe download powershell command -> Run via powershell as admin - > restart terminal (reboot)
+    >> minikube start / minikube start --embed-certs
+
+
+minikube is not a production grade tool used in real-life projects but kubectl is...
+>> minikube status
+>> minikube stop
+>> minikube delete --all
+>> minikube image list
+
+So focus on kubeclt commands 
+>> kubectl get pods -A
+>> kubectl get nodes -A
+>> kubectl delete pod <pod-name/id>
+
+>> minikube service kubernetes-test-app
+>> minikube dashboard
+>> kubectl get endpoints
+>> kubectl get service
+
+How to add new node: minikube start - nodes=2 / minikube start - nodes=2 --embed-certs 
+
+
+
+>> minikube image list
+>> docker images
+>> minikube image load kubernetes-test-app:latest
+>> kubectl image load kubernetes-test-app: latest
+
+>> kubectl apply -f deployment.yaml (from project directory)
+>> kubectl delete deployment kubernetes-test-app (conditional)
+
+kubeclt get pods -A
+kubectl get nodes -A
+
+kubectl delete pod kubernetes-test-app-654ff4f565-kjwlf
+
+minikube service kubernetes-test-app
+
+kubectl get endpoints
+
+minikube dashboard
+
+
+**check load balancing bwtn pods/replicas**
+kubectl get pods
+kubectl logs -f <pod_id>
+
+minikube stop
+
+for imagePullBackoff issue:
+>> docker tag kubernetes-test-app:latest kputt/kubernetes-test-app
+>> docker push kputt/kubernetes-test-app:latest
+
+my doubts: how to I pull an image from ECR or Azure..???

@@ -1,5 +1,6 @@
 FROM python:3.9-slim
 
+#no pyc file created 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
